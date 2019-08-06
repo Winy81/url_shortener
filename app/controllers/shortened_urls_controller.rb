@@ -6,6 +6,16 @@ class ShortenedUrlsController < ApplicationController
     @url = ShortenedUrl.new
   end
 
+  def show
+    @url = ShortenedUrl.find_by_short_url(params[:short_url])
+    if @url.nil?
+      redirect_to root_path
+      flash[:notice] = "URL is not in the database"
+    else
+      redirect_to @url.original_url
+    end
+  end
+
   def create
     @url = ShortenedUrl.new
     @url.original_url = params[:original_url]
