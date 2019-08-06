@@ -3,6 +3,7 @@ class ShortenedUrlsController < ApplicationController
   before_action :find_url, only: [:show, :shortened]
   skip_before_action :verify_authenticity_token
 
+  #index action used like standard new action
   def index
     @url = ShortenedUrl.new
   end
@@ -16,6 +17,7 @@ class ShortenedUrlsController < ApplicationController
     end
   end
 
+  #complex create action possible worth to split
   def create
     @url = ShortenedUrl.new
     @url.original_url = params[:original_url]
