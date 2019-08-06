@@ -1,5 +1,6 @@
 class ShortenedUrlsController < ApplicationController
-
+  
+  before_action :find_url, only: [:show, :shortened]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -7,7 +8,6 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def show
-    @url = ShortenedUrl.find_by_short_url(params[:short_url])
     if @url.nil?
       redirect_to root_path
       flash[:notice] = "URL is not in the database"
@@ -36,10 +36,15 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def shortened
-    @url = ShortenedUrl.find_by_short_url(params[:short_url])
     host = "http://localhost:3000"
     @original_url = @url.original_url
     @short_url = host + '/' + @url.short_url
+  end
+
+  private
+
+  def find_url
+    @url = ShortenedUrl.find_by_short_url(params[:short_url])
   end
 
 end
