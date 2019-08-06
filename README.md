@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple link shortener app
 
-Things you may want to cover:
+Language: Ruby with RoR
+Database: SQlite3
+Layout: Bootstrap
+Tests: RSpec - Capybara
 
-* Ruby version
+Usage:
 
-* System dependencies
+- Clone the repo
+- Open a terminal
+- Navigate into the app folder
+- Run: rails db:create
+- Run: rails db:migrate
+- Open a browser and navigate for http://localhost:3000
+- Thats it.
 
-* Configuration
+If you deploy:
 
-* Database creation
+- For heroku the database have to be changed for PostgreSQL
+- In the shortened_urls_controller, in the "shortened" method the "host" varibale has to be changed for your deplyed app's root link" The tests will be effected in the case" 
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
