@@ -15,4 +15,14 @@ RSpec.feature "Redirect short link" do
 
   end
 
+  scenario "with invalid link" do 
+
+    visit "http://localhost:3000/random_not_exist_link"
+
+    expect(page).to have_content("URL is not in the database")
+
+    expect(page).to have_current_path(root_path)
+
+  end
+
 end
