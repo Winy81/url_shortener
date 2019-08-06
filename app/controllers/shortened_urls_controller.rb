@@ -1,5 +1,7 @@
 class ShortenedUrlsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def index
     @url = ShortenedUrl.new
   end
@@ -21,6 +23,13 @@ class ShortenedUrlsController < ApplicationController
       flash[:notice] = "The link is exist already"
       redirect_to shortened_path(@url_may_exist.short_url)
     end
+  end
+
+  def shortened
+    @url = ShortenedUrl.find_by_short_url(params[:short_url])
+    host = "http://localhost:3000"
+    @original_url = @url.original_url
+    @short_url = host + '/' + @url.short_url
   end
 
 end
