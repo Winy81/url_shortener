@@ -1,6 +1,6 @@
 <center>
-  <h2>Your original Url is: <%= @original_url %></h2>
-  <h2>Your sortener Url is: <%= @short_url %></h2>
+  <h2 class="text-muted">Your original Url is:</h2><h2 class="text-dark"><%= @original_url %></h2> </br>
+  <h2 class="text-muted">Your sortener Url is:</h2><h2 class="text-dark"><%= @short_url %></h2>
   </br>
-  <%= link_to "Back For new Search", root_path %>
+  <%= link_to "Back For new Search", root_path, class:"btn btn-secondary btn-lg" %>
 </center>
